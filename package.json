@@ -1,0 +1,128 @@
+{
+  "name": "typescript-rollup-boilerplate-example",
+  "version": "0.0.1-beta",
+  "description": "<companyName> TypeScript+Rollup boilerplate",
+  "keywords": [
+    "typescript",
+    "rollup",
+    "boilerplate"
+  ],
+  "main": "dist/typescript-rollup-boilerplate-example.js",
+  "module": "dist/typescript-rollup-boilerplate-example.es5.js",
+  "typings": "dist/types/typescript-rollup-boilerplate-example.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "<companyName> <companyEmail@companyDomain.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:olavoparno/typescript-rollup-boilerplate.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
+    "prebuild": "rimraf dist && echo nok > .buildstatus",
+    "postbuild": "npm run test && echo ok > .buildstatus && npm run docs && npm run make-source-map",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts",
+    "docs": "npm run make-badges && typedoc --out docs --target es6 --readme README.md --theme minimal --mode file src",
+    "start": "rollup -c rollup.config.ts -w",
+    "build-badges": "node_modules/.bin/jest-badges-readme",
+    "make-badges": "npm run build-badges",
+    "make-source-map": "node_modules/.bin/source-map-explorer --html dist/typescript-rollup-boilerplate-example.js dist/typescript-rollup-boilerplate-example.js.map > source-map.html || true",
+    "test": "jest --coverage || true",
+    "test:watch": "jest --watch",
+    "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
+    "deploy-docs": "ts-node tools/gh-pages-publish",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release",
+    "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.ts": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+    }
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "moduleNameMapper": {},
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "lcov"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/",
+      "/dist/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "collectCoverage": true,
+    "testURL": "http://localhost/"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "devDependencies": {
+    "@ampproject/rollup-plugin-closure-compiler": "^0.8.5",
+    "@olavoparno/jest-badges-readme": "^1.2.6",
+    "@types/jest": "^24.0.6",
+    "@types/jest-diff": "^20.0.1",
+    "@types/node": "^11.9.4",
+    "commitizen": "^3.0.5",
+    "cross-env": "^5.2.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "husky": "^1.3.1",
+    "jest": "^24.1.0",
+    "lint-staged": "^8.1.4",
+    "lodash.camelcase": "^4.3.0",
+    "prettier": "^1.16.4",
+    "prompt": "^1.0.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.2.1",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-replace": "^2.1.0",
+    "rollup-plugin-typescript2": "^0.19.2",
+    "source-map-explorer": "^1.7.0",
+    "ts-jest": "^24.0.0",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.3.3",
+    "validate-commit-msg": "^2.14.0"
+  }
+}
