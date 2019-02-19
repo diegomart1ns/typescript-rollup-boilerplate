@@ -23,7 +23,6 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist && echo nok > .buildstatus",
     "postbuild": "npm run test && echo ok > .buildstatus && npm run docs && npm run make-source-map",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
@@ -34,7 +33,7 @@
     "make-source-map": "node_modules/.bin/source-map-explorer --html dist/typescript-rollup-boilerplate-example.js dist/typescript-rollup-boilerplate-example.js.map > source-map.html || true",
     "test": "jest --coverage || true",
     "test:watch": "jest --watch",
-    "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
+    "test:prod": "npm run test -- --coverage --no-cache",
     "deploy-docs": "ts-node tools/gh-pages-publish",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "commit": "git-cz",
