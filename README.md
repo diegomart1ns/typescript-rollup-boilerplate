@@ -9,9 +9,37 @@
 | -----------|----------|-----------|-------| ------------ | -------- | ------- |
 | ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![BuildStatus](https://img.shields.io/badge/Build-Passing-brightgreen.svg "Building Status") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
 
-## Table of contents
+## Features
+  - TypeScript compiler bundled with Rollup carrying the following plugins:
+
+    1. Replace (removing node environment things)
+    2. Resolve (module resolution plugin)
+    3. JSON (resolve JSON files)
+    4. TypeScript (compile TS files)
+    5. CommonJS (allow cjs understanding)
+    6. Google Closure Compiler (it reduces the bundle size)
+
+  - Source Map Viewer with [source-map-explorer](https://github.com/danvk/source-map-explorer)
+
+    <img src="https://github.com/danvk/source-map-explorer/raw/master/screenshot.png">
+
+  - Jest Badges within the README file with [jest-badges-readme](https://github.com/olavoparno/jest-badges-readme)
+
+    | Statements | Branches | Functions | Lines | Build Status | Built By | We Love |
+    | -----------|----------|-----------|-------| ------------ | -------- | ------- |
+    | ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![BuildStatus](https://img.shields.io/badge/Build-Passing-brightgreen.svg "Building Status") | ![BuiltBy](https://img.shields.io/badge/TypeScript-Lovers-black.svg "img.shields.io") | ![ForTheBadge](https://img.shields.io/badge/Using-Badges-red.svg "ForTheBadge")
+
+  - Documentation built with [TypeDoc](https://github.com/TypeStrong/typedoc)
+
+    <img src="https://github.com/olavoparno/stuffs/raw/master/typedoc_example.png">
+
+## Requirements
+  - Assuming you have installed all dependencies after `npm install`, you must have [Java](https://www.java.com/en/download/win10.jsp) installed in your environment in order to reduce bundle size with Google Closure Compiler.
 
 ## Motivation
+  - To create a boilerplate ready to deliver JavaScript libraries with ease, strong documentation and tests.
+
+## Table of contents
 
 ### Collaborators
 
